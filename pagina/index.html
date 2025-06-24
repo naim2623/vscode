@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALL HATS - Tienda de Gorras Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #f0c330;
+      --primary-dark: #d8ab20;
+      --dark: #121212;
+      --dark-light: #1f1f1f;
+      --darker: #0a0a0a;
+      --light: #ffffff;
+      --light-gray: #e0e0e0;
+      --gray: #8a8a8a;
+      --danger: #e74c3c;
+      --success: #2ecc71;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--dark-light);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--light);
+      text-decoration: none;
+      padding: 10px 15px;
+      margin: 0 5px;
+      font-weight: 500;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--light);
+    }
+
+    .banner {
+      height: 100vh;
+      min-height: 600px;
+      background-image: url('https://source.unsplash.com/1600x900/?urban-hat');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-top: 60px;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      color: var(--light);
+      margin: 0 auto;
+    }
+
+    .banner-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .banner-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--dark);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(240, 195, 48, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--dark);
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      position: relative;
+      color: var(--light);
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary);
+      margin: 15px auto 0;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .brand-card {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .brand-card h3 {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: var(--light);
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      background-color: var(--dark-light);
+      color: var(--light);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: var(--dark);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-img {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--danger);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: var(--light);
+    }
+
+    .product-brand {
+      color: var(--primary);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .old-price {
+      font-size: 0.9rem;
+      text-decoration: line-through;
+      color: var(--gray);
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-sm {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      background-color: var(--darker);
+      padding: 60px 0 20px;
+      color: var(--light);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .footer-section p {
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
+
+    .footer-section i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: var(--light);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+    }
+    .fade-in.animate {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 80vh;
+      border: 3px solid var(--primary);
+      border-radius: 5px;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close-lightbox:hover {
+      color: var(--primary);
+    }
+
+    .lightbox-caption {
+      color: white;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 992px) {
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--dark-light);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .nav.active {
+        left: 0;
+      }
+
+      .nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-link {
+        margin: 10px 0;
+        font-size: 1.2rem;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .banner-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .brand-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .lightbox img {
+        max-height: 60vh;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .banner-content h1 {
+        font-size: 2rem;
+      }
+
+      .banner-content p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .lightbox img {
+        max-height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">ALL HATS</h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#marcas" class="nav-link">Marcas</a></li>
+          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <section id="inicio" class="banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>Las Mejores Gorras del Momento</h1>
+      <p>Descubre nuestra colección premium de las marcas más exclusivas</p>
+      <a href="#catalogo" class="btn">Explorar Catálogo</a>
+    </div>
+  </section>
+
+  <section id="marcas" class="section brands-section">
+    <div class="container">
+      <h2 class="section-title">Nuestras Marcas</h2>
+      <div class="brand-grid">
+        <div class="brand-card fade-in" data-brand="new-era">
+          <h3>New Era</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="gorrin-bross">
+          <h3>Gorrin Bross</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="31-hats">
+          <h3>31 Hats</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="dandy-hats">
+          <h3>Dandy Hats</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="jc-hats">
+          <h3>JC Hats</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="barbasa-hats">
+          <h3>Barbasa Hats</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="supreme">
+          <h3>Supreme</h3>
+        </div>
+        <div class="brand-card fade-in" data-brand="nike">
+          <h3>Nike</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo" class="section catalog-section">
+    <div class="container">
+      <h2 class="section-title">Nuestro Catálogo</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="new-era">New Era</button>
+        <button class="filter-btn" data-filter="gorrin-bross">Gorrin Bross</button>
+        <button class="filter-btn" data-filter="31-hats">31 Hats</button>
+        <button class="filter-btn" data-filter="dandy-hats">Dandy Hats</button>
+        <button class="filter-btn" data-filter="jc-hats">JC Hats</button>
+        <button class="filter-btn" data-filter="barbasa-hats">Barbasa Hats</button>
+        <button class="filter-btn" data-filter="supreme">Supreme</button>
+        <button class="filter-btn" data-filter="nike">Nike</button>
+      </div>
+      <div class="product-grid">
+        <div class="product-card fade-in" data-brand="new-era">
+          <div class="product-img">
+            <img src="https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/9847680/0/638531968124770000?v=1" alt="New Era 9FORTY Negra" loading="lazy">
+            <span class="product-badge">Nuevo</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">New Era</span>
+            <h3>NEW ERA 9FORTY NEGRA</h3>
+            <div class="product-price">
+              <span class="price">$39.99</span>
+              <span class="old-price">$49.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="new-era">
+          <div class="product-img">
+            <img src="https://resources.sanborns.com.mx/medios-plazavip/mkt/64233d913c7a9_gorra-new-era-new-york-yankees-azul-marino-59fifty1jpg.jpg?scale=500&qlty=75" alt="New Era Fifty59 Azul" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">New Era</span>
+            <h3>NEW ERA FIFTY59 AZUL</h3>
+            <div class="product-price">
+              <span class="price">$45.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="gorrin-bross">
+          <div class="product-img">
+            <img src="https://goorin.com/cdn/shop/files/101-0381-YA-BLK-F01.jpg?v=1704847095" alt="Gorrin Bross Pantera Negra" loading="lazy">
+            <span class="product-badge">Más vendido</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Gorrin Bross</span>
+            <h3>GORRIN BROSS PANTERA NEGRA</h3>
+            <div class="product-price">
+              <span class="price">$35.00</span>
+              <span class="old-price">$40.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="gorrin-bross">
+          <div class="product-img">
+            <img src="https://m.media-amazon.com/images/I/81EV9r4fVQL._AC_SL1500_.jpg" alt="Gorrin Bross Gallo" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Gorrin Bross</span>
+            <h3>GORRIN BROSS GALLO</h3>
+            <div class="product-price">
+              <span class="price">$42.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="31-hats">
+          <div class="product-img">
+            <img src="https://bigbosscaps.com/cdn/shop/files/31-01.jpg?v=1738188247&width=990" alt="31 Hats NY Flames" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">31 Hats</span>
+            <h3>31 HATS NY FLAMES</h3>
+            <div class="product-price">
+              <span class="price">$110.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="31-hats">
+          <div class="product-img">
+            <img src="https://bigbosscaps.com/cdn/shop/files/MAGO31-09.jpg?v=1745973093&width=990" alt="31 Hats Mago" loading="lazy">
+            <span class="product-badge">-15%</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">31 Hats</span>
+            <h3>31 HATS MAGO</h3>
+            <div class="product-price">
+              <span class="price">$90.99</span>
+              <span class="old-price">$100.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="dandy-hats">
+          <div class="product-img">
+            <img src="https://almadetoro.com/cdn/shop/files/9ED3C271-A4ED-4013-92B3-780AB3423D1F_720x.jpg?v=1744091040" alt="Dandy Hats Triple D Limited Edition" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Dandy Hats</span>
+            <h3>TRIPLE D Limited Edition</h3>
+            <div class="product-price">
+              <span class="price">$157,36</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="dandy-hats">
+          <div class="product-img">
+            <img src="https://almadetoro.com/cdn/shop/files/CECDBC95-3AEE-46D0-95C5-74D9527AEA50_720x.jpg?v=1744090912" alt="Dandy Hats Stars & Studs Limited Edition" loading="lazy">
+            <span class="product-badge">Nuevo</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Dandy Hats</span>
+            <h3>STARS & STUDS Limited Edition</h3>
+            <div class="product-price">
+              <span class="price">$140.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="jc-hats">
+          <div class="product-img">
+            <img src="https://almadetoro.com/cdn/shop/files/6A526535-35BA-4338-A669-287406878A49_1080x.jpg?v=1737692218" alt="JC Hats CT Endiamantado" loading="lazy">
+            <span class="product-badge">Oferta</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">JC Hats</span>
+            <h3>CT ENDIAMANTADO By JC HATS</h3>
+            <div class="product-price">
+              <span class="price">$100.00</span>
+              <span class="old-price">$120.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="jc-hats">
+          <div class="product-img">
+            <img src="https://almadetoro.com/cdn/shop/files/0F50E2CC-BC62-4F83-8111-272AA9DCE9AD_720x.jpg?v=1720834669" alt="JC Hats CT By Natanael Cano" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">JC Hats</span>
+            <h3>CT By Natanael Cano</h3>
+            <div class="product-price">
+              <span class="price">$83.40</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="barbasa-hats">
+          <div class="product-img">
+            <img src="https://almadetoro.com/cdn/shop/files/5582B2DC-D1E4-4811-83B9-8DDE974D1E09_720x.jpg?v=1744091356" alt="Barbasa Hats 77" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Barbasa Hats</span>
+            <h3>77</h3>
+            <div class="product-price">
+              <span class="price">$136.30</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="barbasa-hats">
+          <div class="product-img">
+            <img src="https://almadetoro.com/cdn/shop/files/DB770BC3-A390-42F8-8C6D-CEC09773D836_900x.jpg?v=1748917777" alt="Barbasa Hats Chrome Black" loading="lazy">
+            <span class="product-badge">Nuevo</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Barbasa Hats</span>
+            <h3>CHROME BLACK</h3>
+            <div class="product-price">
+              <span class="price">$183.59</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="supreme">
+          <div class="product-img">
+            <img src="https://proutdoor.cl/wp-content/uploads/2024/11/trucker-khaki.jpg" alt="Bass Pro Shop Creme" loading="lazy">
+            <span class="product-badge">Más vendido</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">BASS PRO SHOP</span>
+            <h3>BASS PRO SHOP CREME</h3>
+            <div class="product-price">
+              <span class="price">$20.99</span>
+              <span class="old-price">$34.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="supreme">
+          <div class="product-img">
+            <img src="https://m.media-amazon.com/images/I/51VP9Lghc6L._AC_.jpg" alt="Bass Pro Shop Black" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Supreme</span>
+            <h3>BASS PRO SHOP BLACK</h3>
+            <div class="product-price">
+              <span class="price">$14.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="nike">
+          <div class="product-img">
+            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ff331fb5-1d01-472f-81e2-fadf111d33df/U+NK+DF+CLUB+CAP+S+CB+MTFUT+L.png" alt="Nike Dri-FIT Club" loading="lazy">
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Nike</span>
+            <h3>Nike Dri-FIT Club</h3>
+            <div class="product-price">
+              <span class="price">$28.00</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in" data-brand="nike">
+          <div class="product-img">
+            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/bafebe89-e689-4493-9663-d9ccfc25da15/U+NK+DFADV+CLUB+CAP+U+SAB+P.png" alt="Nike Dri-FIT" loading="lazy">
+            <span class="product-badge">-20%</span>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Nike</span>
+            <h3>Nike Dri-FIT</h3>
+            <div class="product-price">
+              <span class="price">$29.99</span>
+              <span class="old-price">$37.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline">Ver más</button>
+              <button class="btn btn-sm btn-primary">Añadir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>ALL HATS</h3>
+          <p>Tu tienda de gorras premium con las mejores marcas y diseños exclusivos.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p><i class="fas fa-envelope"></i> contacto@allhats.com</p>
+          <p><i class="fas fa-phone"></i> +505 8888-8888</p>
+        </div>
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 ALL HATS. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <span class="close-lightbox">&times;</span>
+      <img id="lightbox-image" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.nav').classList.toggle('active');
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    function activateNavLink() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + section.offsetHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.href.includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', activateNavLink);
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 60,
+            behavior: 'smooth'
+          });
+        }
+        document.querySelector('.nav').classList.remove('active');
+      });
+    });
+    activateNavLink();
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        productCards.forEach(card => {
+          if (filter === 'all' || card.dataset.brand === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    const productImages = document.querySelectorAll('.product-img img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeLightbox = document.querySelector('.close-lightbox');
+
+    productImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImage.src = img.src;
+      });
+    });
+
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    const fadeInElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeInElements.forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
